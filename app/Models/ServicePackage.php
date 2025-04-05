@@ -23,4 +23,9 @@ class ServicePackage extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function optionValues()
+    {
+        return $this->hasMany(ServicePackageOptionValue::class);
+    }
 }

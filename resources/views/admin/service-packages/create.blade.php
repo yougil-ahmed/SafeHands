@@ -48,6 +48,12 @@
                         <td><input type="number" name="packages[1][revisions]" class="form-control"></td>
                         <td><input type="number" name="packages[2][revisions]" class="form-control"></td>
                     </tr>
+                    <tr id="optionsContainer"></tr>
+                    <tr>
+                        <td colspan="4">
+                            <button type="button" class="btn btn-warning" id="addOptionBtn">+ Add Option</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -55,3 +61,36 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let optionIndex = 0;
+        const addOptionBtn = document.getElementById('addOptionBtn');
+        const container = document.getElementById('optionsContainer');
+
+        addOptionBtn.addEventListener('click', function() {
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>
+                    <input type="text" name="options[${optionIndex}][name]" class="form-control" placeholder="Option Name" required>
+                </td>
+                <td>
+                    <input type="text" name="options[${optionIndex}][values][0]" class="form-control" placeholder="Value for Basic" required>
+                </td>
+                <td>
+                    <input type="text" name="options[${optionIndex}][values][1]" class="form-control" placeholder="Value for Standard" required>
+                </td>
+                <td>
+                    <input type="text" name="options[${optionIndex}][values][2]" class="form-control" placeholder="Value for Premium" required>
+                </td>
+            `;
+
+            // Insert the new row before the button row
+            container.parentNode.insertBefore(row, container.nextSibling);
+            optionIndex++;
+        });
+    });
+</script>
+@endpush

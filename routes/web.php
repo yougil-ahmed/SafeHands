@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\SellerController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServicePackageController;
+use App\Http\Controllers\ServicePackageOptionValueController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
@@ -53,6 +54,11 @@ Route::middleware([RoleMiddleware::class . ':admin'])->name('admin.')->group(fun
     Route::controller(ServicePackageController::class)->group(function () {
         Route::get('/services/{service}/packages/create', 'create')->name('service-packages.create');
         Route::post('/services/{service}/packages', 'store')->name('service-packages.store');
+    });
+
+    Route::controller(ServicePackageOptionValueController::class)->group(function () {
+        Route::get('/services/{service}/options/create', 'create')->name('service.options.create');
+        Route::post('/services/{service}/options', 'store')->name('service.options.store');
     });
 });
 
