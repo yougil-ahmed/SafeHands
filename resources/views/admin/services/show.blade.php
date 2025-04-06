@@ -132,26 +132,22 @@
                                     {{ $service->packages[0]->description }}
                                 </p>
                                 
-                                <div class="flex items-center mb-4">
+                                {{-- <div class="flex items-center mb-4">
                                     <i class="far fa-clock text-gray-400 mr-2"></i>
                                     <span>2-day delivery</span>
                                     <div class="mx-3 text-gray-300">|</div>
                                     <i class="fas fa-sync text-gray-400 mr-2"></i>
                                     <span>2 Revisions</span>
-                                </div>
+                                </div> --}}
                                 
                                 <div class="space-y-3 mb-6">
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>1 page</span>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>Design customization</span>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-gray-300 mt-1 mr-3"></i>
-                                        <span class="text-gray-400">Content upload</span>
+                                    <div class="space-y-3 mb-6">
+                                        @foreach ($service->packages[0]->optionValues as $option)
+                                            <div class="flex items-start">
+                                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                                <span>{{ $option->name }}: {{ $option->value }}</span>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

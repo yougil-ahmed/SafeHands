@@ -584,6 +584,7 @@
             jQuery(window).on("resize", function () { });
         })(jQuery);
     </script>
+    @stack('scripts')
 </body>
 
 </html>

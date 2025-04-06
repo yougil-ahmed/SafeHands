@@ -1,18 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Buyer\BuyerController;
+use App\Http\Controllers\ServicePackageController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Seller\SellerController;
 use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\ServicePackageController;
-use App\Http\Controllers\ServicePackageOptionValueController;
 use App\Http\Middleware\RoleMiddleware;
-use App\Models\Service;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\Architecture\Services\ServiceContainer;
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,16 +45,12 @@ Route::middleware([RoleMiddleware::class . ':admin'])->name('admin.')->group(fun
         Route::patch('/admin/services/{service}/reject' , 'reject')->name('services.reject');
     });
 
-
-
-    Route::controller(ServicePackageController::class)->group(function () {
-        Route::get('/services/{service}/packages/create', 'create')->name('service-packages.create');
-        Route::post('/services/{service}/packages', 'store')->name('service-packages.store');
-    });
-
-    Route::controller(ServicePackageOptionValueController::class)->group(function () {
-        Route::get('/services/{service}/options/create', 'create')->name('service.options.create');
-        Route::post('/services/{service}/options', 'store')->name('service.options.store');
+    Route::controller(ServicePackageController::class)->group(function() {
+        Route::get('services/{service}/packages/create', 'create')->name('service-packages.create');
+        Route::post('services/{service}/packages/', 'store')->name('service-packages.store');
+        Route::get('services/{service}/packages/{package}/edit', 'edit')->name('service-packages.edit');
+        Route::put('services/{service}/packages/{package}', 'update')->name('service-packages.update');
+        Route::delete('services/{service}/packages/{package}', 'destroy')->name('service-packages.destroy');
     });
 });
 

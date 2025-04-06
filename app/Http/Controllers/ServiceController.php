@@ -27,7 +27,7 @@ class ServiceController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = Auth::id();
-        $data['status'] = 'pending'; // Default status
+        $data['status'] = 'pending';
 
         if ($request->hasFile('images')) {
             $images = [];
@@ -39,13 +39,14 @@ class ServiceController extends Controller
 
         $service = Service::create($data);
 
-        // إعادة توجيه المستخدم إلى صفحة إنشاء الباقات مع تمرير الـ ID الخاص بالخدمة
+        // Redirect to packages creation with service ID
         return to_route('admin.service-packages.create', ['service' => $service->id])
             ->with('success', 'Service created successfully! Now create your packages.');
     }
 
     public function show(Service $service)
     {
+        // $service = Service::with('packages.optionValues')->findOrFail($service);
         return view('admin.services.show' , compact('service'));
     }
 
