@@ -18,7 +18,7 @@ class StoreServicePackageRequest extends FormRequest
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'price_per_hour' => 'nullable|numeric|min:0',
-            'delivery_time' => 'integer|min:1',
+            'delivery_time' => 'nullable|integer|min:1',
             'revisions' => 'integer|min:0',
         ];
     }

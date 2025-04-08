@@ -125,7 +125,7 @@
                             <div x-show="activeTab === '{{ $service->packages[0]->name }}'">
                                 <div class="flex justify-between items-center mb-4">
                                     <h3 class="font-medium text-lg">{{ $service->packages[0]->name }} Package</h3>
-                                    <span class="font-bold text-xl">{{ $service->packages[0]->price }} DH</span>
+                                    <span class="font-bold text-xl">{{ $service->packages[0]->price }} $</span>
                                 </div>
                                 
                                 <p class="text-gray-600 mb-4" style="max-width: 80ch; word-break: break-word;">
@@ -145,7 +145,7 @@
                                         @foreach ($service->packages[0]->optionValues as $option)
                                             <div class="flex items-start">
                                                 <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                                <span>{{ $option->name }}: {{ $option->value }}</span>
+                                                <span>{{ $option->option->name }}: {{ $option->value }}</span>
                                             </div>
                                         @endforeach
                                     </div>
@@ -156,33 +156,21 @@
                             <div x-show="activeTab === '{{ $service->packages[1]->name }}'">
                                 <div class="flex justify-between items-center mb-4">
                                     <h3 class="font-medium text-lg">{{ $service->packages[1]->name }} Package</h3>
-                                    <span class="font-bold text-xl">{{ $service->packages[1]->price }} DH</span>
+                                    <span class="font-bold text-xl">{{ $service->packages[1]->price }} $</span>
                                 </div>
                                 
                                 <p class="text-gray-600 mb-4" style="max-width: 80ch; word-break: break-word;">
                                     {{ $service->packages[1]->description }}
                                 </p>
                                 
-                                <div class="flex items-center mb-4">
-                                    <i class="far fa-clock text-gray-400 mr-2"></i>
-                                    <span>5-day delivery</span>
-                                    <div class="mx-3 text-gray-300">|</div>
-                                    <i class="fas fa-sync text-gray-400 mr-2"></i>
-                                    <span>5 Revisions</span>
-                                </div>
-                                
                                 <div class="space-y-3 mb-6">
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>5 pages</span>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>Responsive design</span>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>CMS integration</span>
+                                    <div class="space-y-3 mb-6">
+                                        @foreach ($service->packages[1]->optionValues as $option)
+                                            <div class="flex items-start">
+                                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                                <span>{{ $option->option->name }}: {{ $option->value }}</span>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -191,33 +179,21 @@
                             <div x-show="activeTab === '{{ $service->packages[2]->name }}'">
                                 <div class="flex justify-between items-center mb-4">
                                     <h3 class="font-medium text-lg">{{ $service->packages[2]->name }} Package</h3>
-                                    <span class="font-bold text-xl">{{ $service->packages[2]->price }} DH</span>
+                                    <span class="font-bold text-xl">{{ $service->packages[2]->price }} $</span>
                                 </div>
                                 
                                 <p class="text-gray-600 mb-4" style="max-width: 80ch; word-break: break-word;">
                                     {{ $service->packages[2]->description }}
                                 </p>
                                 
-                                <div class="flex items-center mb-4">
-                                    <i class="far fa-clock text-gray-400 mr-2"></i>
-                                    <span>10-day delivery</span>
-                                    <div class="mx-3 text-gray-300">|</div>
-                                    <i class="fas fa-sync text-gray-400 mr-2"></i>
-                                    <span>Unlimited Revisions</span>
-                                </div>
-                                
                                 <div class="space-y-3 mb-6">
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>E-commerce functionality</span>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>Payment gateway</span>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
-                                        <span>{{ $service->packages[2]->name }} support</span>
+                                    <div class="space-y-3 mb-6">
+                                        @foreach ($service->packages[2]->optionValues as $option)
+                                            <div class="flex items-start">
+                                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                                <span>{{ $option->option->name }}: {{ $option->value }}</span>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

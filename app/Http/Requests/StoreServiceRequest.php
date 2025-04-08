@@ -25,7 +25,7 @@ class StoreServiceRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
+            'price' => 'numeric|min:0',
             'location' => 'string|max:255',
             'category_id' => 'required|exists:categories,id',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',

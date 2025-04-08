@@ -52,6 +52,37 @@
                                     @endforeach
                                 </tr>
 
+                                {{-- <!-- Delivery Time -->
+                                <tr>
+                                    <td>
+                                        <label class="form-control-label">Delivery Time</label>
+                                        <small class="text-muted d-block">(in days)</small>
+                                    </td>
+                                    @foreach([0, 1, 2] as $index)
+                                    <td>
+                                        <input type="number" name="packages[{{ $index }}][delivery_time]" 
+                                               class="form-control form-control-sm" 
+                                               value="{{ old("packages.$index.delivery_time") }}">
+                                    </td>
+                                    @endforeach
+                                </tr> --}}
+
+                                {{-- <!-- Revisions -->
+                                <tr>
+                                    <td>
+                                        <label class="form-control-label">Revisions</label>
+                                    </td>
+                                    @foreach([0, 1, 2] as $index)
+                                    <td>
+                                        <input type="number" name="packages[{{ $index }}][revisions]" 
+                                               class="form-control form-control-sm" 
+                                               value="{{ old("packages.$index.revisions") }}">
+                                    </td>
+                                    @endforeach
+                                </tr> --}}
+
+                                
+
                                 <!-- Prices -->
                                 <tr>
                                     <td>
@@ -66,35 +97,6 @@
                                                    value="{{ old("packages.$index.price") }}" 
                                                    required>
                                         </div>
-                                    </td>
-                                    @endforeach
-                                </tr>
-
-                                <!-- Delivery Time -->
-                                <tr>
-                                    <td>
-                                        <label class="form-control-label">Delivery Time</label>
-                                        <small class="text-muted d-block">(in days)</small>
-                                    </td>
-                                    @foreach([0, 1, 2] as $index)
-                                    <td>
-                                        <input type="number" name="packages[{{ $index }}][delivery_time]" 
-                                               class="form-control form-control-sm" 
-                                               value="{{ old("packages.$index.delivery_time") }}">
-                                    </td>
-                                    @endforeach
-                                </tr>
-
-                                <!-- Revisions -->
-                                <tr>
-                                    <td>
-                                        <label class="form-control-label">Revisions</label>
-                                    </td>
-                                    @foreach([0, 1, 2] as $index)
-                                    <td>
-                                        <input type="number" name="packages[{{ $index }}][revisions]" 
-                                               class="form-control form-control-sm" 
-                                               value="{{ old("packages.$index.revisions") }}">
                                     </td>
                                     @endforeach
                                 </tr>
