@@ -36,14 +36,14 @@
             <fieldset class="name">
                 <div class="body-title">Category Name <span class="tf-color-1">*</span>
                 </div>
-                <input class="flex-grow" type="text" placeholder="Category name" name="name"
-                tabindex="0" value="" aria-required="true" required="">
+                <input value="{{ old('name') }}" class="flex-grow" type="text" placeholder="Category name" name="name"
+                tabindex="0" aria-required="true" required="">
             </fieldset>
             <fieldset class="name">
                 <div class="body-title">Category Description <span class="tf-color-1">*</span>
                 </div>
-                <input class="flex-grow" type="text" placeholder="Category Description" name="description"
-                tabindex="0" value="" aria-required="true" required="">
+                <input value="{{ old('description') }}" class="flex-grow" type="text" placeholder="Category Description" name="description"
+                tabindex="0" aria-required="true" required="">
             </fieldset>
             <fieldset>
                 <div class="body-title">Upload images <span class="tf-color-1">*</span>
@@ -60,7 +60,7 @@
                             <span class="body-text">Drop your images here or select <span
                                 class="tf-color">click
                                 to browse</span></span>
-                                <input type="file" id="myFile" name="category_image" accept="image/*">
+                                <input value="{{ old('category_image') }}" type="file" id="myFile" name="category_image" accept="image/*">
                             </label>
                         </div>
                     </div>

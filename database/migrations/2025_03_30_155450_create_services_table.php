@@ -20,6 +20,7 @@ return new class extends Migration
             // $table->decimal('price', 10, 2)->nullable();
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->string('location');
+            $table->string('service_image');
             $table->json('images')->nullable();
             $table->timestamps();
         });

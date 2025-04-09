@@ -29,6 +29,10 @@ class ServiceController extends Controller
         $data['user_id'] = Auth::id();
         $data['status'] = 'pending';
 
+        if ($request->hasFile('service_image')) {
+            $data['service_image'] = $request->file('service_image')->store('services', 'public');
+        }
+
         if ($request->hasFile('images')) {
             $images = [];
             foreach ($request->file('images') as $image) {

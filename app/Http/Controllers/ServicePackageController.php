@@ -29,8 +29,8 @@ class ServicePackageController extends Controller
             'packages.*.name' => 'required|string|max:255',
             'packages.*.description' => 'nullable|string',
             'packages.*.price' => 'required|numeric|min:0',
-            'packages.*.delivery_time' => 'required|integer|min:1',
-            'packages.*.revisions' => 'required|integer|min:0',
+            'packages.*.delivery_time' => 'nullable|integer|min:1',
+            'packages.*.revisions' => 'nullable|integer|min:0',
             'options' => 'nullable|array',
             'options.*.name' => 'required_with:options|string|max:255',
             'options.*.values' => 'required_with:options|array|size:3',
@@ -45,8 +45,8 @@ class ServicePackageController extends Controller
                 'name' => $packageData['name'],
                 'description' => $packageData['description'],
                 'price' => $packageData['price'],
-                'delivery_time' => $packageData['delivery_time'],
-                'revisions' => $packageData['revisions']
+                // 'delivery_time' => $packageData['delivery_time'],
+                // 'revisions' => $packageData['revisions']
             ]);
         }
 

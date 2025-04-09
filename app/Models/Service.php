@@ -11,7 +11,7 @@ class Service extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'category_id', 'title', 'description',  'status', 'location'];
+    protected $fillable = ['user_id', 'category_id', 'title', 'description',  'status', 'location', 'service_image', 'images'];
 
     protected $casts = [
         'images' => 'array',

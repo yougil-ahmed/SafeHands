@@ -45,7 +45,7 @@
                         
                         <div class="flex items-center">
                             <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
-                                <img src="/api/placeholder/100/100" alt="Profile" class="w-full h-full object-cover">
+                                <img src="{{ asset('storage/' . $service->seller->profile_image) }}" alt="Profile" class="w-full h-full object-cover">
                             </div>
                             <div>
                                 <h3 class="font-medium text-gray-800">{{ $service->seller->name }}</h3>

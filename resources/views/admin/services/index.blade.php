@@ -120,8 +120,8 @@
                                 <td>
                                     <div class="list-icon-function">
                                         {{-- <a href="#"> --}}
-                                            <div class="item edit">
-                                                <a href="{{ route('admin.services.show' , $service->id) }}" class="btn btn-primary"><i class="icon-eye"></i> Edit</a>
+                                            <div class="item show">
+                                                <a href="{{ route('admin.services.show' , $service->id) }}" class="btn btn-primary"><i class="icon-eye"></i> Show</a>
                                             </div>
 
                                             <div class="item edit">

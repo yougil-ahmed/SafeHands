@@ -383,7 +383,7 @@
                                             id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                                             <span class="header-user wg-user">
                                                 <span class="image">
-                                                    <img src="images/avatar/user-1.png" alt="">
+                                                    <img src="{{ asset('storage/' . Auth::user()->profile_image) }}" style="width: 40px; height: 40px;" alt="">
                                                 </span>
                                                 <span class="flex flex-column">
                                                     <span class="body-title mb-2">{{ Auth::user()->name }}</span>
@@ -429,12 +429,15 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('logout') }}" class="user-item">
-                                                    <div class="icon">
-                                                        <i class="icon-log-out"></i>
-                                                    </div>
-                                                    <div class="body-title-2">Log out</div>
-                                                </a>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="user-item" style="border: none; background: none; padding: 0;">
+                                                        <div class="icon">
+                                                            <i class="icon-log-out"></i>
+                                                        </div>
+                                                        <div class="body-title-2">Log out</div>
+                                                    </button>
+                                                </form>
                                             </li>
                                         </ul>
                                     </div>
