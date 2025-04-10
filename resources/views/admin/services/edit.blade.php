@@ -73,6 +73,26 @@
                 tabindex="0" value="{{ old('location' , $service->location) }}" aria-required="true" required="">
             </fieldset>
             <fieldset>
+                <div class="body-title">Upload your banner image <span class="tf-color-1">*</span>
+                </div>
+                <div class="upload-image flex-grow">
+                    <div class="item" id="imgpreview" style="display:none">
+                        <img src="upload-1.html" class="effect8" alt="">
+                    </div>
+                    <div id="upload-file" class="item up-load">
+                        <label class="uploadfile" for="myFile">
+                            <span class="icon">
+                                <i class="icon-upload-cloud"></i>
+                            </span>
+                            <span class="body-text">Drop your service image here or select <span
+                                class="tf-color">click
+                                to browse</span></span>
+                                <input value="{{ old('service_image') }}" type="file" id="myFile" name="service_image">
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
                 <div class="body-title">Upload images <span class="tf-color-1">*</span>
                 </div>
                 <div class="upload-image flex-grow">

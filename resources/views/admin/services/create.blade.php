@@ -56,66 +56,60 @@
                 </div>
                 <textarea class="mb-10" name="description" placeholder="Description"
                     tabindex="0" aria-required="true" required="">{{ old('description') }}</textarea>
-                {{-- <div class="text-tiny">Do not exceed 100 characters when entering the
-                    Serive description.</div> --}}
             </fieldset>
-            {{-- <fieldset class="price">
-                <div class="body-title">Price <span class="tf-color-1">*</span>
-                </div>
-                <input value="{{ old('') }}" class="flex-grow" type="number" placeholder="Service Price" name="price"
-                tabindex="0" value="" aria-required="true" required="">
-            </fieldset> --}}
             <fieldset class="name">
                 <div class="body-title">Service Location <span class="tf-color-1">*</span>
                 </div>
                 <input value="{{ old('location') }}" class="flex-grow" type="text" placeholder="Service Location" name="location"
                 tabindex="0" value="" aria-required="true" required="">
             </fieldset>
+            
             <fieldset>
-                <div class="body-title">Upload images <span class="tf-color-1">*</span>
+                <div class="body-title">Upload your banner image <span class="tf-color-1">*</span>
                 </div>
                 <div class="upload-image flex-grow">
                     <div class="item" id="imgpreview" style="display:none">
                         <img src="upload-1.html" class="effect8" alt="">
                     </div>
                     <div id="upload-file" class="item up-load">
-                        <label class="uploadfile" for="myFile">
+                        <label class="uploadfile" for="bannerImage">
                             <span class="icon">
                                 <i class="icon-upload-cloud"></i>
                             </span>
-                            <span class="body-text">Drop your images here or select <span
+                            <span class="body-text">Drop your service image here or select <span
                                 class="tf-color">click
                                 to browse</span></span>
-                                <input value="{{ old('service_image') }}" type="file" id="myFile" name="service_image">
+                                <input value="{{ old('service_image') }}" type="file" id="bannerImage" name="service_image">
                             </label>
                         </div>
                     </div>
                 </fieldset>
-                <div class="bot">
-                    <div></div>
-                    <button class="tf-button w208" type="submit">Save</button>
-                </div>
-            </form>
-            <fieldset>
-                <div class="body-title">Upload images <span class="tf-color-1">*</span>
-                </div>
-                <div class="upload-image flex-grow">
-                    <div class="item" id="imgpreview" style="display:none">
-                        <img src="upload-1.html" class="effect8" alt="">
+                
+                
+                
+                <!-- Container for image fields -->
+                <fieldset id="additional-image-fields">
+                    <div class="body-title">Upload images <span class="tf-color-1">*</span>
                     </div>
-                    <div id="upload-file" class="item up-load">
-                        <label class="uploadfile" for="myFile">
-                            <span class="icon">
-                                <i class="icon-upload-cloud"></i>
-                            </span>
-                            <span class="body-text">Drop your images here or select <span
-                                class="tf-color">click
-                                to browse</span></span>
-                                <input value="{{ old('images') }}" type="file" id="myFile" name="images" accept="image/*">
-                            </label>
+                    <fieldset id="image-upload-container">
+                        <div class="body-title">Upload image 1 <span class="tf-color-1">*</span></div>
+                        <div class="upload-image flex-grow">
+                            <div class="item" id="imgpreview" style="display:none">
+                                <img src="upload-1.html" class="effect8" alt="">
+                            </div>
+                            <div id="upload-file" class="item up-load">
+                                <label class="uploadfile" for="imageUpload0">
+                                    <span class="icon">
+                                        <i class="icon-upload-cloud"></i>
+                                    </span>
+                                    <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                    <input type="file" id="imageUpload0" name="images[]" accept="image/*">
+                                </label>
+                            </div>
                         </div>
-                    </div>
+                    </fieldset>
                 </fieldset>
+
                 <div class="bot">
                     <div></div>
                     <button class="tf-button w208" type="submit">Save</button>
@@ -123,4 +117,59 @@
             </form>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let imageCounter = 2;
+            
+            // Function to add a new image upload field
+            function addNewImageField() {
+                if (imageCounter > 4) {
+                    alert('You can only upload up to 4 images.');
+                    return;
+                }
+                
+                const container = document.getElementById('additional-image-fields');
+                const newFieldset = document.createElement('fieldset');
+                newFieldset.className = 'image-upload-fieldset';
+                newFieldset.innerHTML = `
+                    <div class="body-title">Additional Image ${imageCounter} </div>
+                    <div class="upload-image flex-grow">
+                        <div class="item" style="display:none">
+                            <img src="upload-1.html" class="effect8" alt="">
+                        </div>
+                        <div class="item up-load">
+                            <label class="uploadfile" for="imageUpload${imageCounter}">
+                                <span class="icon">
+                                    <i class="icon-upload-cloud"></i>
+                                </span>
+                                <span class="body-text">Drop your images here or select <span class="tf-color">click to browse</span></span>
+                                <input type="file" id="imageUpload${imageCounter}" name="images[]" accept="image/*">
+                            </label>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newFieldset);
+                imageCounter++;
+                
+                // Add event listener to the new input
+                const newInput = newFieldset.querySelector('input[type="file"]');
+                newInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        addNewImageField();
+                    }
+                });
+            }
+            
+            // Add event listener to the initial image upload field
+            const initialInput = document.getElementById('imageUpload0');
+            initialInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    addNewImageField();
+                }
+            });
+        });
+    </script>
+    @endpush
 @endsection

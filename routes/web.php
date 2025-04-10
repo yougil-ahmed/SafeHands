@@ -43,6 +43,8 @@ Route::middleware([RoleMiddleware::class . ':admin'])->name('admin.')->group(fun
 
         Route::patch('/admin/services/{service}/approve' , 'approve')->name('services.approve');
         Route::patch('/admin/services/{service}/reject' , 'reject')->name('services.reject');
+
+        Route::post('/admin/services/{service}/message' , 'sendMessage')->name('services.sendMessage');
     });
 
     Route::controller(ServicePackageController::class)->group(function() {

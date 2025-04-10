@@ -196,14 +196,14 @@
             <!-- Toggle Buttons -->
             <div class="flex justify-center mb-10">
                 <div class="toggle-btn">
-                    <div id="toggle-slider" class="toggle-slider login"></div>
-                    <div id="login-option" class="toggle-option active-option">Sign In</div>
-                    <div id="signup-option" class="toggle-option">Sign Up</div>
+                    <div id="toggle-slider" class="toggle-slider signup"></div>
+                    <div id="login-option" class="toggle-option">Sign In</div>
+                    <div id="signup-option" class="toggle-option active-option">Sign Up</div>
                 </div>
             </div>
             
             <!-- Login Form Content -->
-            <div id="login-form" class="form-container visible flex-grow flex flex-col justify-center">
+            <div id="login-form" class="form-container hidden flex-grow flex flex-col justify-center">
                 <h1 class="text-2xl font-bold text-center mb-2">Welcome back</h1>
                 <p class="text-gray-500 text-center mb-8">Sign in to access your dashboard</p>
                 
@@ -242,16 +242,16 @@
                         Sign In
                     </button>
                     
-                    {{-- <div class="relative my-6">
+                    <div class="relative my-6">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-gray-200"></div>
                         </div>
                         <div class="relative flex justify-center text-sm">
                             <span class="px-2 bg-white text-gray-500">Or continue with</span>
                         </div>
-                    </div> --}}
+                    </div>
                     
-                    {{-- <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-2 gap-3">
                         <button type="button" class="social-btn rounded-lg py-2 px-4 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="mr-2">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -268,7 +268,7 @@
                             </svg>
                             Facebook
                         </button>
-                    </div> --}}
+                    </div>
                 </form>
                 
                 <div class="text-center mt-8 text-sm text-gray-600">
@@ -278,7 +278,7 @@
             </div>
             
             <!-- Register Form Content -->
-            <div id="signup-form" class="form-container hidden flex-grow flex flex-col justify-center">
+            <div id="signup-form" class="form-container visible flex-grow flex flex-col justify-center">
                 <h1 class="text-2xl font-bold text-center mb-2">Create your account</h1>
                 <p class="text-gray-500 text-center mb-8">Get started with our platform today</p>
                 
@@ -341,16 +341,16 @@
                         Create Account
                     </button>
                     
-                    {{-- <div class="relative my-6">
+                    <div class="relative my-6">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-gray-200"></div>
                         </div>
                         <div class="relative flex justify-center text-sm">
                             <span class="px-2 bg-white text-gray-500">Or sign up with</span>
                         </div>
-                    </div> --}}
+                    </div>
                     
-                    {{-- <div class="grid grid-cols-2 gap-3">
+                    <div class="grid grid-cols-2 gap-3">
                         <button type="button" class="social-btn rounded-lg py-2 px-4 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="mr-2">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -367,7 +367,7 @@
                             </svg>
                             Facebook
                         </button>
-                    </div> --}}
+                    </div>
                 </form>
                 
                 <div class="text-center mt-8 text-sm text-gray-600">

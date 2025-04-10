@@ -58,7 +58,7 @@
                                 <td>{{ $service->id }}</td>
                                 <td>
                                     <div class="">
-                                        <img src="{{ asset('storage/' . $service->images) }}" alt="" class="image">
+                                        <img style="width: fit-content;" src="{{ asset('storage/' . $service->service_image) }}" alt="" class="image">
                                     </div>
                                 </td>
                                 <td>

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('service_image');
             $table->json('images')->nullable();
+            $table->text('message')->nullable();
             $table->timestamps();
         });
     }

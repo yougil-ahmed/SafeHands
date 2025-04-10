@@ -36,7 +36,7 @@ class ServiceController extends Controller
         if ($request->hasFile('images')) {
             $images = [];
             foreach ($request->file('images') as $image) {
-                $images[] = $image->store('admin.services', 'public');
+                $images[] = $image->store('services', 'public');
             }
             $data['images'] = $images;
         }
@@ -50,6 +50,7 @@ class ServiceController extends Controller
 
     public function show(Service $service)
     {
+        // dd($service);
         // $service = Service::with('packages.optionValues')->findOrFail($service);
         return view('admin.services.show' , compact('service'));
     }
@@ -125,5 +126,17 @@ class ServiceController extends Controller
     {
         $service->update(['status' => 'rejected']);
         return back()->with('error', 'Service rejected.');
+    }
+
+    public function sendMessage(Request $request, Service $service)
+    {
+        $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        // Logic to send message to the service owner
+        // For example, you can use a notification system or email
+
+        return back()->with('success', 'Message sent to the service owner.');
     }
 }
