@@ -312,7 +312,7 @@
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                             id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                             <span class="header-item">
-                                                <span class="text-tiny">1</span>
+                                                <span class="text-tiny">{{ count($notifications ?? 0) }}</span>
                                                 <i class="icon-bell"></i>
                                             </span>
                                         </button>
@@ -321,61 +321,35 @@
                                             <li>
                                                 <h6>Notifications</h6>
                                             </li>
-                                            <li>
-                                                <div class="message-item item-1">
-                                                    <div class="image">
-                                                        <i class="icon-noti-1"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Discount available</div>
-                                                        <div class="text-tiny">Morbi sapien massa, ultricies at rhoncus
-                                                            at, ullamcorper nec diam</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="message-item item-2">
-                                                    <div class="image">
-                                                        <i class="icon-noti-2"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Account has been verified</div>
-                                                        <div class="text-tiny">Mauris libero ex, iaculis vitae rhoncus
-                                                            et</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="message-item item-3">
-                                                    <div class="image">
-                                                        <i class="icon-noti-3"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Order shipped successfully</div>
-                                                        <div class="text-tiny">Integer aliquam eros nec sollicitudin
-                                                            sollicitudin</div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="message-item item-4">
-                                                    <div class="image">
-                                                        <i class="icon-noti-4"></i>
-                                                    </div>
-                                                    <div>
-                                                        <div class="body-title-2">Order pending: <span>ID 305830</span>
-                                                        </div>
-                                                        <div class="text-tiny">Ultricies at rhoncus at ullamcorper</div>
-                                                    </div>
-                                                </div>
-                                            </li>
+
+                                            @forelse ($notifications as $notification)
+    <li>
+        <div class="message-item">
+            <div class="image">
+                @if ($notification['type'] === 'accepted')
+                    <i class="icon-noti-3" style="color: #28a745;"></i> <!-- Green for accepted -->
+                @elseif ($notification['type'] === 'rejected')
+                    <i class="icon-noti-4" style="color: #dc3545;"></i> <!-- Red for rejected -->
+                @else
+                    <i class="icon-noti-1" style="color: #007bff;"></i> <!-- Blue for other types -->
+                @endif
+            </div>
+            <div>
+                <div class="body-title-2" style="color: #333;">
+                    {{ ucfirst($notification['type']) }} Service
+                </div>
+                <div class="text-tiny" style="color: #6c757d;">{{ $notification['message'] }}</div>
+            </div>
+        </div>
+    </li>
+@empty
+    <li class="text-center text-muted py-3" style="color: #adb5bd;">No notifications</li>
+@endforelse
+
                                             <li><a href="#" class="tf-button w-full">View all</a></li>
                                         </ul>
                                     </div>
                                 </div>
-
-
-
 
                                 <div class="popup-wrap user type-header">
                                     <div class="dropdown">

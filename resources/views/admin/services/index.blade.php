@@ -68,6 +68,7 @@
                                 <td>{{ $service->price }} DH</td>
                                 <td>
                                     @if($service->status === 'pending')
+                                        <!-- Approve Form -->
                                         <form action="{{ route('admin.services.approve', $service->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('PATCH')
@@ -78,15 +79,36 @@
                                             " onclick="return confirm('Approve this service?')">Approve</button>
                                         </form>
 
-                                        <form action="{{ route('admin.services.reject', $service->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('PATCH')
-                                            <button class="btn btn-danger" style="
-                                                background-color: #fee2e2;
-                                                border: 1px solid #ef4444;
-                                                color: #991b1b;
-                                                " onclick="return confirm('Reject this service?')">Reject</button>
-                                        </form>
+                                        <!-- Reject Button (Triggers Modal) -->
+                                        <button type="button" class="btn btn-danger" style="
+                                            background-color: #fee2e2;
+                                            border: 1px solid #ef4444;
+                                            color: #991b1b;
+                                        " data-bs-toggle="modal" data-bs-target="#rejectModal{{ $service->id }}">
+                                            Reject
+                                        </button>
+
+                                        <!-- Modal for Rejection Reason -->
+                                        <div class="modal fade" id="rejectModal{{ $service->id }}" tabindex="-1" aria-labelledby="rejectModalLabel{{ $service->id }}" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <form method="POST" action="{{ route('admin.services.reject', $service->id) }}">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="rejectModalLabel{{ $service->id }}">Reject Service</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <textarea name="reason" class="form-control" rows="4" placeholder="Enter rejection reason..." required></textarea>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-danger">Reject with Reason</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     @else
                                         <span style="
                                             display: inline-block;

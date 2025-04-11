@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreServiceRequest;
 use App\Models\Category;
+use App\Models\Notification;
 use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -119,12 +120,30 @@ class ServiceController extends Controller
     public function approve(Service $service)
     {
         $service->update(['status' => 'approved']);
+
+        Notification::create([
+            'user_id' => $service->user_id, // replace with actual relation
+            'type' => 'approved',
+            'message' => 'Your service "' . $service->title . '" has been approved.',
+        ]);
+
         return back()->with('success', 'Service approved.');
     }
 
-    public function reject(Service $service)
+    public function reject(Request $request, Service $service)
     {
+        $request->validate([
+            'reason' => 'required|string|max:1000',
+        ]);
+
         $service->update(['status' => 'rejected']);
+
+        Notification::create([
+            'user_id' => $service->user_id,
+            'type' => 'rejected',
+            'message' => 'Your service "' . $service->title . '" was rejected. Reason: ' . $request->reason,
+        ]);
+
         return back()->with('error', 'Service rejected.');
     }
 

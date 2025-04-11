@@ -63,4 +63,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'seller_id');
     }
+
+    // app/Models/User.php
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class);
+    }
 }
