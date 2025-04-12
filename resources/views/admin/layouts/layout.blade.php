@@ -323,30 +323,46 @@
                                             </li>
 
                                             @forelse ($notifications as $notification)
-    <li>
-        <div class="message-item">
-            <div class="image">
-                @if ($notification['type'] === 'accepted')
-                    <i class="icon-noti-3" style="color: #28a745;"></i> <!-- Green for accepted -->
-                @elseif ($notification['type'] === 'rejected')
-                    <i class="icon-noti-4" style="color: #dc3545;"></i> <!-- Red for rejected -->
-                @else
-                    <i class="icon-noti-1" style="color: #007bff;"></i> <!-- Blue for other types -->
-                @endif
-            </div>
-            <div>
-                <div class="body-title-2" style="color: #333;">
-                    {{ ucfirst($notification['type']) }} Service
-                </div>
-                <div class="text-tiny" style="color: #6c757d;">{{ $notification['message'] }}</div>
-            </div>
-        </div>
-    </li>
-@empty
-    <li class="text-center text-muted py-3" style="color: #adb5bd;">No notifications</li>
-@endforelse
-
-                                            <li><a href="#" class="tf-button w-full">View all</a></li>
+                                                <li>
+                                                    <div class="message-item">
+                                                        <div class="image">
+                                                            @if ($notification['type'] === 'accepted')
+                                                                <i class="icon-noti-3" style="color: #28a745;"></i> <!-- Green for accepted -->
+                                                            @elseif ($notification['type'] === 'rejected')
+                                                                <i class="icon-noti-4" style="color: #dc3545;"></i> <!-- Red for rejected -->
+                                                            @else
+                                                                <i class="icon-noti-1" style="color: #007bff;"></i> <!-- Blue for other types -->
+                                                            @endif
+                                                        </div>
+                                                        <div class="flex justify-between items-start">
+                                                            <div>
+                                                                <div class="body-title-2" style="color: #333;">
+                                                                    {{ ucfirst($notification['type']) }} Service
+                                                                </div>
+                                                                <div class="text-tiny" style="color: #6c757d;">{{ $notification['message'] }}</div>
+                                                            </div>
+                                                            
+                                                            <!-- Delete Button -->
+                                                            <form method="POST" action="{{ route('admin.notifications.destroy', $notification['id']) }}"  onclick="return confirm('Are you sure you want to delete this notification?');">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="text-red-500 hover:text-red-700 focus:outline-none">
+                                                                    <i class="fas fa-trash-alt"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <form method="POST" action="{{ route('admin.notifications.destroyAll') }}" onsubmit="return confirm('Are you sure you want to delete all notifications?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="tf-button w-full">Cleare All</button>
+                                                    </form>
+                                                </li>
+                                            @empty
+                                                <li class="text-center text-muted py-3" style="color: #adb5bd;">No notifications</li>
+                                            @endforelse
                                         </ul>
                                     </div>
                                 </div>

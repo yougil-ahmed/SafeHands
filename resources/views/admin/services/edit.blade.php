@@ -60,12 +60,12 @@
                 {{-- <div class="text-tiny">Do not exceed 100 characters when entering the
                     Serive description.</div> --}}
             </fieldset>
-            <fieldset class="price">
+            {{-- <fieldset class="price">
                 <div class="body-title">Price <span class="tf-color-1">*</span>
                 </div>
                 <input class="flex-grow" type="number" placeholder="Service Price" name="price"
-                tabindex="0" value="{{ old('price' , $service->price) }}" aria-required="true" required="">
-            </fieldset>
+                tabindex="0" value="{{ old('price' , $service->price) }}" aria-required="true">
+            </fieldset> --}}
             <fieldset class="name">
                 <div class="body-title">Service Location <span class="tf-color-1">*</span>
                 </div>

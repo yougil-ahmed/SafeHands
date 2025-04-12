@@ -3,6 +3,88 @@
     Services
 @endsection
 @section('admin_layout')
+
+    <style>
+                                            /* Add these styles to your CSS file */
+
+                                            /* Modal styling */
+                                            .modal-content {
+                                                border-radius: 0.5rem;
+                                                overflow: hidden;
+                                            }
+
+                                            .modal-header {
+                                                border-bottom: 1px solid rgba(0,0,0,0.05);
+                                                padding: 1rem 1.5rem;
+                                            }
+
+                                            .modal-footer {
+                                                border-top: 1px solid rgba(0,0,0,0.05);
+                                                padding: 1rem 1.5rem;
+                                            }
+
+                                            /* Form controls styling */
+                                            .form-control:focus, .form-select:focus {
+                                                border-color: #dee2e6;
+                                                box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.15);
+                                            }
+
+                                            textarea.form-control {
+                                                resize: vertical;
+                                                min-height: 100px;
+                                            }
+
+                                            /* Button styling */
+                                            .btn-danger {
+                                                background-color: #dc3545;
+                                                border-color: #dc3545;
+                                                transition: all 0.2s ease;
+                                            }
+
+                                            .btn-danger:hover {
+                                                background-color: #c82333;
+                                                border-color: #bd2130;
+                                            }
+
+                                            .btn-outline-secondary {
+                                                color: #6c757d;
+                                                border-color: #6c757d;
+                                            }
+
+                                            .btn-outline-secondary:hover {
+                                                color: #fff;
+                                                background-color: #6c757d;
+                                                border-color: #6c757d;
+                                            }
+
+                                            /* Animation for modal */
+                                            .modal.fade .modal-dialog {
+                                                transition: transform 0.2s ease-out;
+                                            }
+
+                                            .modal.fade:not(.show) .modal-dialog {
+                                                transform: translateY(-25px);
+                                            }
+
+                                            /* Form validation styling */
+                                            .is-invalid {
+                                                border-color: #dc3545 !important;
+                                                padding-right: calc(1.5em + 0.75rem);
+                                                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+                                                background-repeat: no-repeat;
+                                                background-position: right calc(0.375em + 0.1875rem) center;
+                                                background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+                                            }
+
+                                            .invalid-feedback {
+                                                display: none;
+                                                width: 100%;
+                                                margin-top: 0.25rem;
+                                                font-size: 80%;
+                                                color: #dc3545;
+                                            }
+                                        </style>
+
     <div class="main-content-wrap">
         <div class="flex items-center flex-wrap justify-between gap20 mb-27">
             <h3>Services</h3>
@@ -90,25 +172,108 @@
 
                                         <!-- Modal for Rejection Reason -->
                                         <div class="modal fade" id="rejectModal{{ $service->id }}" tabindex="-1" aria-labelledby="rejectModalLabel{{ $service->id }}" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <form method="POST" action="{{ route('admin.services.reject', $service->id) }}">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="rejectModalLabel{{ $service->id }}">Reject Service</h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <textarea name="reason" class="form-control" rows="4" placeholder="Enter rejection reason..." required></textarea>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-danger">Reject with Reason</button>
-                                                        </div>
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content border-0 shadow">
+                                                    <div class="modal-header bg-light">
+                                                        <h5 class="modal-title" id="rejectModalLabel{{ $service->id }}">
+                                                            <i class="fas fa-times-circle text-danger me-2"></i>Reject Service
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                </form>
+                                                    
+                                                    <form method="POST" action="{{ route('admin.services.reject', $service->id) }}" id="rejectForm{{ $service->id }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        
+                                                        <div class="modal-body p-4">
+                                                            <div class="mb-3">
+                                                                <label for="rejection-reason-{{ $service->id }}" class="form-label fw-bold">Rejection Reason</label>
+                                                                <p class="text-muted small mb-3">Please provide a clear explanation for rejecting this service. This message will be sent to the service provider.</p>
+                                                                
+                                                                <select class="form-select mb-3" id="reason-template-{{ $service->id }}" onchange="fillReasonTemplate({{ $service->id }})">
+                                                                    <option value="">Select a template reason or write custom...</option>
+                                                                    <option value="insufficient-info">Insufficient Information Provided</option>
+                                                                    <option value="quality-concerns">Quality Concerns</option>
+                                                                    <option value="policy-violation">Policy Violation</option>
+                                                                    <option value="duplicate">Duplicate Service</option>
+                                                                </select>
+                                                                
+                                                                <textarea 
+                                                                    name="reason" 
+                                                                    id="rejection-reason-{{ $service->id }}" 
+                                                                    class="form-control" 
+                                                                    rows="5" 
+                                                                    placeholder="Please explain why this service is being rejected..."
+                                                                    required
+                                                                ></textarea>
+                                                                
+                                                                <div class="invalid-feedback" id="reason-error-{{ $service->id }}">
+                                                                    Please provide a rejection reason.
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-check mb-0">
+                                                                <input class="form-check-input" type="checkbox" id="allow-resubmit-{{ $service->id }}" name="allow_resubmit" value="1" checked>
+                                                                <label class="form-check-label" for="allow-resubmit-{{ $service->id }}">
+                                                                    Allow provider to resubmit after addressing issues
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="modal-footer bg-light">
+                                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-danger" id="submit-reject-{{ $service->id }}">
+                                                                <i class="fas fa-times-circle me-1"></i>
+                                                                Reject Service
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <!-- Add this JavaScript to your page -->
+                                        <script>
+                                            function fillReasonTemplate(serviceId) {
+                                                const selectElement = document.getElementById(`reason-template-${serviceId}`);
+                                                const textareaElement = document.getElementById(`rejection-reason-${serviceId}`);
+                                                
+                                                // Define template text for each reason
+                                                const templates = {
+                                                    'insufficient-info': "We cannot approve this service due to insufficient information. Please provide more details about:\n- Service description\n- Pricing structure\n- Delivery timeframes\n\nYou may resubmit once these details are included.",
+                                                    
+                                                    'quality-concerns': "We're unable to approve this service due to quality concerns. Specifically:\n- [specific quality issues]\n\nPlease improve these aspects and resubmit your service for another review.",
+                                                    
+                                                    'policy-violation': "This service violates our marketplace policies regarding [specific policy]. Please review our service guidelines at [link to guidelines] for more information.",
+                                                    
+                                                    'duplicate': "This service appears to be a duplicate of an existing service in our marketplace. Please modify your offering to be sufficiently different or unique compared to existing services."
+                                                };
+                                                
+                                                // Set the textarea value based on selection
+                                                if (selectElement.value && templates[selectElement.value]) {
+                                                    textareaElement.value = templates[selectElement.value];
+                                                }
+                                            }
+                                            
+                                            // Form validation before submission
+                                            document.querySelectorAll('[id^="rejectForm"]').forEach(form => {
+                                                form.addEventListener('submit', function(event) {
+                                                    const serviceId = this.id.replace('rejectForm', '');
+                                                    const reasonField = document.getElementById(`rejection-reason-${serviceId}`);
+                                                    const errorMsg = document.getElementById(`reason-error-${serviceId}`);
+                                                    
+                                                    // Validate reason field
+                                                    if (!reasonField.value.trim()) {
+                                                        event.preventDefault();
+                                                        reasonField.classList.add('is-invalid');
+                                                        errorMsg.style.display = 'block';
+                                                    } else {
+                                                        reasonField.classList.remove('is-invalid');
+                                                        errorMsg.style.display = 'none';
+                                                    }
+                                                });
+                                            });
+                                        </script>
                                     @else
                                         <span style="
                                             display: inline-block;
