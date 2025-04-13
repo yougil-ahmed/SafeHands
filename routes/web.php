@@ -72,6 +72,17 @@ Route::middleware([RoleMiddleware::class . ':buyer'])->group(function () {
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+
+    Route::get('/category/{category}', 'showCategory')->name('category.show');
+    Route::get('/categories', 'allCategories')->name('categories.index');
+
+    Route::get('/service/{service}', 'showService')->name('service.show');
+    Route::get('/services', 'allServices')->name('services.index');
+    
+    Route::get('/search', 'search')->name('search');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/contact', 'contact')->name('contact');
+    Route::post('/contact', 'sendContactMessage')->name('contact.send');
 });
 
 

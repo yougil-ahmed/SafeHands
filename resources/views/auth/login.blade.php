@@ -133,7 +133,7 @@
         <div class="left-panel hidden lg:block p-10">
             <div class="relative z-10 h-full flex flex-col">
                 <div class="mb-8">
-                    <h2 class="text-2xl font-bold">@php echo config('app.name', 'ServicePro'); @endphp</h2>
+                    <h2 class="text-2xl font-bold">@php echo config('app.name', 'Safe Hands'); @endphp</h2>
                 </div>
                 
                 <div class="flex-grow flex flex-col justify-center">
