@@ -213,7 +213,7 @@
             </a>
             
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#" class="nav-link text-[var(--light)] font-medium hover:text-[var(--primary)]">Home</a>
+                <a href="{{ route('home') }}" class="nav-link text-[var(--light)] font-medium hover:text-[var(--primary)]">Home</a>
                 
                 <!-- categories Dropdown -->
                 <div class="relative group">
@@ -273,8 +273,8 @@
                     <div class="absolute left-0 mt-2 w-[600px] bg-[var(--dark)] rounded-md shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 border border-[var(--darker)]">
                         <!-- Title Section -->
                         <div class="px-6 pt-4 pb-2 border-b border-[var(--darker)]">
-                            <h3 class="text-lg font-bold text-[var(--primary)]">Family Solutions</h3>
-                            <p class="text-sm text-[var(--gray)] mt-1">Find the perfect Nanny for your family</p>
+                            <h3 class="text-lg font-bold text-[var(--primary)]">Buyer Solutions</h3>
+                            <p class="text-sm text-[var(--gray)] mt-1">Find the perfect service for your mission</p>
                         </div>
                         
                         <!-- Action Buttons Grid -->
@@ -287,18 +287,18 @@
                                     </svg>
                                 </div>
                                 <h4 class="text-lg font-semibold text-[var(--light)] group-hover:text-[var(--primary)] transition-colors">Start Your Search</h4>
-                                <p class="text-sm text-[var(--gray)] text-center mt-1">Find your perfect nanny match</p>
+                                <p class="text-sm text-[var(--gray)] text-center mt-1">Find your perfect service match</p>
                             </a>
                             
                             <!-- Sign In Button -->
-                            <a href="#" class="group flex flex-col items-center justify-center p-6 rounded-lg border border-[var(--darker)] hover:border-[var(--primary)] hover:bg-[var(--darker)] transition-all">
+                            <a href="{{ route('login') }}" class="group flex flex-col items-center justify-center p-6 rounded-lg border border-[var(--darker)] hover:border-[var(--primary)] hover:bg-[var(--darker)] transition-all">
                                 <div class="w-14 h-14 bg-[var(--primary)]/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-[var(--primary)]/20 transition-colors">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                 </div>
                                 <h4 class="text-lg font-semibold text-[var(--light)] group-hover:text-[var(--primary)] transition-colors">Sign In</h4>
-                                <p class="text-sm text-[var(--gray)] text-center mt-1">Access your family account</p>
+                                <p class="text-sm text-[var(--gray)] text-center mt-1">Access your account</p>
                             </a>
                         </div>
                         
@@ -340,66 +340,66 @@
                     <button class="nav-link text-[var(--light)] font-medium hover:text-[var(--primary)] flex items-center">
                         For Sellers <i class="fas fa-chevron-down ml-1 text-xs transition-transform group-hover:rotate-180"></i>
                     </button>
-                    
-                    <div class="absolute left-0 mt-2 w-[600px] bg-white rounded-md shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0">
+
+                    <div class="absolute left-0 mt-2 w-[600px] bg-[var(--dark)] rounded-md shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 border border-[var(--darker)]">
                         <!-- Title Section -->
-                        <div class="px-6 pt-4 pb-2 border-b border-gray-100">
-                            <h3 class="text-lg font-bold text-[#14B8A6]">Nanny Opportunities</h3>
-                            <p class="text-sm text-gray-500 mt-1">Build your career with SafeHands</p>
+                        <div class="px-6 pt-4 pb-2 border-b border-[var(--darker)]">
+                            <h3 class="text-lg font-bold text-[var(--primary)]">Seller Opportunities</h3>
+                            <p class="text-sm text-[var(--gray)] mt-1">Build your career with {{ config('app.name', 'Safe Hands') }}</p>
                         </div>
-                        
+
                         <!-- Action Buttons Grid -->
                         <div class="grid grid-cols-2 gap-4 p-6">
                             <!-- Apply Now Button -->
-                            <a href="#" class="group flex flex-col items-center justify-center p-6 rounded-lg border border-gray-200 hover:border-[#14B8A6] hover:bg-[#f0f9f8] transition-all">
-                                <div class="w-14 h-14 bg-[#14B8A6]/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-[#14B8A6]/20 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#14B8A6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <a href="#" class="group flex flex-col items-center justify-center p-6 rounded-lg border border-[var(--darker)] hover:border-[var(--primary)] hover:bg-[var(--darker)] transition-all">
+                                <div class="w-14 h-14 bg-[var(--primary)]/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-[var(--primary)]/20 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
-                                <h4 class="text-lg font-semibold text-gray-800 group-hover:text-[#14B8A6] transition-colors">Apply Now</h4>
-                                <p class="text-sm text-gray-500 text-center mt-1">Join our network of professional nannies</p>
+                                <h4 class="text-lg font-semibold text-[var(--light)] group-hover:text-[var(--primary)] transition-colors">Apply Now</h4>
+                                <p class="text-sm text-[var(--gray)] text-center mt-1">Join our network of professional sellers</p>
                             </a>
-                            
-                            <!-- Nanny Login Button -->
-                            <a href="#" class="group flex flex-col items-center justify-center p-6 rounded-lg border border-gray-200 hover:border-[#14B8A6] hover:bg-[#f0f9f8] transition-all">
-                                <div class="w-14 h-14 bg-[#14B8A6]/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-[#14B8A6]/20 transition-colors">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#14B8A6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+                            <!-- Seller Login Button -->
+                            <a href="{{ route('login') }}" class="group flex flex-col items-center justify-center p-6 rounded-lg border border-[var(--darker)] hover:border-[var(--primary)] hover:bg-[var(--darker)] transition-all">
+                                <div class="w-14 h-14 bg-[var(--primary)]/10 rounded-full flex items-center justify-center mb-3 group-hover:bg-[var(--primary)]/20 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                                     </svg>
                                 </div>
-                                <h4 class="text-lg font-semibold text-gray-800 group-hover:text-[#14B8A6] transition-colors">Nanny Login</h4>
-                                <p class="text-sm text-gray-500 text-center mt-1">Access your nanny portal</p>
+                                <h4 class="text-lg font-semibold text-[var(--light)] group-hover:text-[var(--primary)] transition-colors">Seller Login</h4>
+                                <p class="text-sm text-[var(--gray)] text-center mt-1">Access your nanny portal</p>
                             </a>
                         </div>
-                        
+
                         <!-- Quick Links -->
-                        <div class="px-6 py-4 border-t border-gray-100">
-                            <h4 class="text-sm font-semibold text-gray-500 uppercase mb-2">Resources</h4>
+                        <div class="px-6 py-4 border-t border-[var(--darker)]">
+                            <h4 class="text-sm font-semibold text-[var(--gray)] uppercase mb-2">Resources</h4>
                             <div class="grid grid-cols-2 gap-2">
-                                <a href="#" class="text-sm text-gray-700 hover:text-[#14B8A6] flex items-center py-1">
+                                <a href="#" class="text-sm text-[var(--light)] hover:text-[var(--primary)] flex items-center py-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>
                                     Training Programs
                                 </a>
-                                <a href="#" class="text-sm text-gray-700 hover:text-[#14B8A6] flex items-center py-1">
+                                <a href="#" class="text-sm text-[var(--light)] hover:text-[var(--primary)] flex items-center py-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>
                                     Pay Rates
                                 </a>
-                                <a href="#" class="text-sm text-gray-700 hover:text-[#14B8A6] flex items-center py-1">
+                                <a href="#" class="text-sm text-[var(--light)] hover:text-[var(--primary)] flex items-center py-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>
                                     Certification
                                 </a>
-                                <a href="#" class="text-sm text-gray-700 hover:text-[#14B8A6] flex items-center py-1">
+                                <a href="#" class="text-sm text-[var(--light)] hover:text-[var(--primary)] flex items-center py-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>
-                                    Nanny FAQs
+                                    Seller FAQs
                                 </a>
                             </div>
                         </div>
@@ -413,13 +413,16 @@
             </div>
             
             <div class="flex items-center space-x-4">
-                <div class="relative">
+                {{-- <div class="relative">
                     <input type="text" placeholder="Search NFTs..." class="search-input text-white px-4 py-2 rounded-full w-32 md:w-48 focus:outline-none focus:ring-0">
                     <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
-                </div>
+                </div> --}}
+                <a href="{{ route('login') }}" class="nav-link text-[var(--light)] font-medium hover:text-[var(--primary)]">Sign in</a>
                 <button class="btn-primary px-4 py-2 rounded-full font-medium flex items-center space-x-2">
-                    <i class="fas fa-wallet"></i>
-                    <span>Connect</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[var(--light)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                    </svg>
+                    <span><a href="{{ route('register') }}">Get Started</a></span>
                 </button>
                 <button class="md:hidden text-white">
                     <i class="fas fa-bars text-xl"></i>
@@ -432,42 +435,40 @@
     <section class="px-6 md:px-12 pt-32 pb-20 flex flex-col md:flex-row items-center justify-between gap-12">
         <div class="md:w-1/2 mb-8 md:mb-0 animate__animated animate__fadeInLeft">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Discover, Collect and Sell 
-                <span class="gradient-text">Extraordinary</span> 
-                NFTs
+                Book Trusted Professionals for 
+                <span class="gradient-text">Real-World Services</span>
             </h1>
             <p class="text-gray-400 mb-8 text-lg">
-                The premier digital marketplace for crypto collectibles and non-fungible tokens (NFTs). 
-                Buy, sell, and discover exclusive digital assets.
+                The premier platform for local services. Hire cleaners, chefs, handymen, tutors, and more—all verified and ready to help.
             </p>
             
             <div class="flex flex-wrap gap-4 mb-8">
                 <button class="btn-primary px-6 py-3 rounded-full font-medium flex items-center space-x-2">
-                    <i class="fas fa-rocket"></i>
-                    <span>Explore</span>
+                    <i class="fas fa-search"></i>
+                    <span>Find Services</span>
                 </button>
                 <button class="btn-outline px-6 py-3 rounded-full font-medium flex items-center space-x-2">
-                    <i class="fas fa-plus"></i>
-                    <span>Create</span>
+                    <i class="fas fa-user-plus"></i>
+                    <span>Become a Provider</span>
                 </button>
                 <button class="bg-transparent flex items-center space-x-2 text-gray-400 hover:text-white transition duration-300">
                     <i class="fas fa-play-circle text-purple-400"></i>
-                    <span>Watch video</span>
+                    <span>How It Works</span>
                 </button>
             </div>
             
             <div class="grid grid-cols-3 gap-6 mb-8">
                 <div class="bg-gray-800 bg-opacity-50 p-4 rounded-xl">
-                    <h3 class="text-2xl font-bold text-purple-400">271k +</h3>
-                    <p class="text-gray-400">Art works</p>
+                    <h3 class="text-2xl font-bold text-purple-400">10k +</h3>
+                    <p class="text-gray-400">Services Offered</p>
                 </div>
                 <div class="bg-gray-800 bg-opacity-50 p-4 rounded-xl">
-                    <h3 class="text-2xl font-bold text-purple-400">20k +</h3>
-                    <p class="text-gray-400">Auctions</p>
+                    <h3 class="text-2xl font-bold text-purple-400">5k +</h3>
+                    <p class="text-gray-400">Happy Clients</p>
                 </div>
                 <div class="bg-gray-800 bg-opacity-50 p-4 rounded-xl">
-                    <h3 class="text-2xl font-bold text-purple-400">7k +</h3>
-                    <p class="text-gray-400">Artists</p>
+                    <h3 class="text-2xl font-bold text-purple-400">2k +</h3>
+                    <p class="text-gray-400">Verified Pros</p>
                 </div>
             </div>
             
@@ -479,39 +480,39 @@
                     <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User" class="w-12 h-12 rounded-full border-2 border-purple-900 object-cover">
                 </div>
                 <div class="ml-4">
-                    <h3 class="text-2xl font-bold text-purple-400">40k +</h3>
+                    <h3 class="text-2xl font-bold text-purple-400">15k +</h3>
                     <p class="text-gray-400">Active Users</p>
                 </div>
             </div>
         </div>
         
         <div class="md:w-2/5 relative animate__animated animate__fadeInRight">
-            <div class="nft-card floating">
-                <img src="https://source.unsplash.com/random/600x600/?digital,art" alt="Featured NFT" class="w-full h-auto rounded-lg object-cover">
+            <div class="service-card floating">
+                <img src="{{ asset('storage/wallpaperflare.com_wallpaper.jpg') }}" alt="Featured Service" class="w-full h-auto rounded-lg object-cover">
                 <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black to-transparent">
                     <div class="flex justify-between items-end mb-4">
                         <div>
-                            <p class="text-sm text-purple-400 mb-1">Ending in</p>
-                            <p class="text-xl font-bold" id="hero-countdown">1h 20m 15s</p>
+                            <p class="text-sm text-purple-400 mb-1">Available Now</p>
+                            <p class="text-xl font-bold">Professional Cleaning</p>
                         </div>
                         <div>
-                            <p class="text-sm text-purple-400 mb-1">Highest bid</p>
-                            <p class="text-xl font-bold">3.24 ETH <span class="text-gray-400 text-sm">($5,246)</span></p>
+                            <p class="text-sm text-purple-400 mb-1">Starting at</p>
+                            <p class="text-xl font-bold">$25/hr <span class="text-gray-400 text-sm">(5.0 ★)</span></p>
                         </div>
                     </div>
                     <div class="flex justify-between gap-3">
                         <button class="btn-outline w-full py-3 rounded-full font-medium flex items-center justify-center space-x-2">
-                            <i class="fas fa-gavel"></i>
-                            <span>Place Bid</span>
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Book Now</span>
                         </button>
                         <button class="btn-primary w-full py-3 rounded-full font-medium flex items-center justify-center space-x-2">
-                            <i class="fas fa-shopping-bag"></i>
-                            <span>Buy Now</span>
+                            <i class="fas fa-info-circle"></i>
+                            <span>Details</span>
                         </button>
                     </div>
                 </div>
-                <div class="absolute top-4 right-4 countdown-badge px-3 py-1 rounded-full text-sm font-medium">
-                    <i class="fas fa-fire mr-1"></i> Hot Deal
+                <div class="absolute top-4 right-4 verified-badge px-3 py-1 rounded-full text-sm font-medium">
+                    <i class="fas fa-check-circle mr-1"></i> Verified Pro
                 </div>
             </div>
             
@@ -521,16 +522,72 @@
     </section>
     
     <!-- Payment Partners -->
-    <section class="px-6 md:px-12 py-8 border-t border-b border-gray-800 bg-gray-900 bg-opacity-50">
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" class="h-8 opacity-70 hover:opacity-100 transition hover:scale-110">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" alt="Coinbase" class="h-8 opacity-70 hover:opacity-100 transition hover:scale-110">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Binance_logo.png" alt="Binance" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Revolut_logo.svg" alt="Revolut" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Exodus_Logo.svg" alt="Exodus" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+    <section class="px-6 md:px-12 py-8 border-t border-b border-gray-800 bg-gray-900 bg-opacity-50 overflow-hidden">
+        <div class="relative">
+            <!-- Marquee container -->
+            <div class="flex w-max animate-marquee whitespace-nowrap">
+                <!-- Original items -->
+                <div class="flex items-center gap-12 pr-12">
+                    <!-- Payment Methods - 16 total for better scrolling -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" class="h-8 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Binance_logo.png" alt="Binance" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Revolut_logo.svg" alt="Revolut" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Exodus_Logo.svg" alt="Exodus" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Apple_Pay_logo.svg" alt="Apple Pay" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Google_Pay_Logo.svg" alt="Google Pay" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Samsung_Pay_logo.svg" alt="Samsung Pay" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Skrill_logo.svg" alt="Skrill" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Trust_Wallet.svg" alt="Trust Wallet" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Coinbase_Logo.svg" alt="Coinbase" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                </div>
+                <!-- Duplicate items (creates seamless loop) -->
+                <div class="flex items-center gap-12 pr-12">
+                    <!-- Same payment methods repeated -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Bitcoin.svg" alt="Bitcoin" class="h-8 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/American_Express_logo_%282018%29.svg" alt="American Express" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Binance_logo.png" alt="Binance" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Revolut_logo.svg" alt="Revolut" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Exodus_Logo.svg" alt="Exodus" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Apple_Pay_logo.svg" alt="Apple Pay" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg" alt="MetaMask" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/df/Google_Pay_Logo.svg" alt="Google Pay" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Samsung_Pay_logo.svg" alt="Samsung Pay" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Skrill_logo.svg" alt="Skrill" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Trust_Wallet.svg" alt="Trust Wallet" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Coinbase_Logo.svg" alt="Coinbase" class="h-6 opacity-70 hover:opacity-100 transition hover:scale-110">
+                </div>
+            </div>
         </div>
     </section>
+
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+        
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
     
     <!-- Trending Collections -->
     <section class="px-6 md:px-12 py-16">

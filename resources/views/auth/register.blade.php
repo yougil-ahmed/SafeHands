@@ -242,7 +242,7 @@
                         Sign In
                     </button>
                     
-                    <div class="relative my-6">
+                    {{-- <div class="relative my-6">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-gray-200"></div>
                         </div>
@@ -268,7 +268,7 @@
                             </svg>
                             Facebook
                         </button>
-                    </div>
+                    </div> --}}
                 </form>
                 
                 <div class="text-center mt-8 text-sm text-gray-600">
@@ -341,7 +341,7 @@
                         Create Account
                     </button>
                     
-                    <div class="relative my-6">
+                    {{-- <div class="relative my-6">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-gray-200"></div>
                         </div>
@@ -367,7 +367,7 @@
                             </svg>
                             Facebook
                         </button>
-                    </div>
+                    </div> --}}
                 </form>
                 
                 <div class="text-center mt-8 text-sm text-gray-600">
