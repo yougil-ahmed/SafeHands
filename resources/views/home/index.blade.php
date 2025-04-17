@@ -777,12 +777,12 @@
         }
     </style>
     
-    <!-- Trending Collections -->
+    <!-- Popular Services -->
     <section class="px-6 md:px-12 py-16">
         <div class="flex justify-between items-center mb-8">
-            <h2 class="text-3xl font-bold">Trending Collections</h2>
+            <h2 class="text-3xl font-bold">Popular Services</h2>
             <a href="#" class="text-purple-400 hover:text-purple-300 flex items-center">
-                <span>View all</span>
+                <span>View all services</span>
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>

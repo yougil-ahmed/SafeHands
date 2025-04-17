@@ -237,5 +237,113 @@
                 </button>
             </div>
         </div>
+
+        <!-- Reviews Section -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mt-8">
+            <!-- Reviews Header -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800">Customer Reviews</h2>
+                    <div class="flex items-center mt-1">
+                        <div class="flex text-yellow-400 mr-2">
+                            @for($i = 1; $i <= 5; $i++)
+                                <i class="fas fa-star{{ $i > $service->avg_rating ? '-empty' : '' }}"></i>
+                            @endfor
+                        </div>
+                        <span class="text-gray-600 text-sm">
+                            {{ $service->reviews_count }} reviews • {{ $service->avg_rating }}/5 average
+                        </span>
+                    </div>
+                </div>
+                <a href="{{ route('admin.reviews.create', $service->id) }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Write a Review
+                </a>
+            </div>
+
+            <!-- Reviews Filter -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <button class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">All</button>
+                <button class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium">5 Stars</button>
+                <button class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium">4 Stars</button>
+                <button class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium">3 Stars</button>
+                <button class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium">2 Stars</button>
+                <button class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-full text-sm font-medium">1 Star</button>
+            </div>
+
+            <!-- Reviews List -->
+            <div class="space-y-6">
+                @forelse($service->reviews as $review)
+                <div class="border-b border-gray-100 pb-6 last:border-0 last:pb-0">
+                    <!-- Review Header -->
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full overflow-hidden mr-3 flex-shrink-0">
+                                <img src="{{ asset('storage/' . $review->user->profile_image) }}" 
+                                    alt="{{ $review->user->name }}" 
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-800">{{ $review->user->name }}</h4>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <div class="flex text-yellow-400 mr-2">
+                                        @for($i = 1; $i <= 5; $i++)
+                                            <i class="fas fa-star{{ $i > $review->rating ? '-empty' : '' }}"></i>
+                                        @endfor
+                                    </div>
+                                    <span>{{ $review->created_at->format('M d, Y') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+
+                    <!-- Review Content -->
+                    <p class="text-gray-700 mb-3">{{ $review->content }}</p>
+
+                    <!-- Review Actions -->
+                    <div class="flex items-center text-sm text-gray-500">
+                        <button class="flex items-center mr-4 hover:text-blue-600">
+                            <i class="far fa-thumbs-up mr-1"></i>
+                            <span>Helpful ({{ $review->helpful_count }})</span>
+                        </button>
+                        <button class="flex items-center hover:text-blue-600">
+                            <i class="far fa-comment mr-1"></i>
+                            <span>Reply</span>
+                        </button>
+                    </div>
+
+                    <!-- Replies (if any) -->
+                    @if($review->replies->count() > 0)
+                    <div class="mt-4 pl-4 border-l-2 border-gray-200">
+                        @foreach($review->replies as $reply)
+                        <div class="mb-3 last:mb-0">
+                            <div class="flex items-center text-sm mb-1">
+                                <span class="font-medium text-gray-800 mr-2">{{ $reply->user->name }}</span>
+                                <span class="text-gray-500">{{ $reply->created_at->diffForHumans() }}</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">{{ $reply->content }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                    @endif
+                </div>
+                @empty
+                <div class="text-center py-8">
+                    <i class="fas fa-comment-slash text-3xl text-gray-400 mb-3"></i>
+                    <p class="text-gray-500">No reviews yet. Be the first to review!</p>
+                </div>
+                @endforelse
+            </div>
+
+        <!-- Pagination -->
+        {{-- @if($service->reviews->hasPages())
+            <div class="mt-6 flex justify-center">
+                {{ $service->reviews->links() }}
+            </div>
+            @endif
+        </div> --}}
     </div>
 @endsection
